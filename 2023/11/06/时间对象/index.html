@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>时间对象 | 万一可以了</title>
+    <meta name="author" content="万一" />
+    <meta name="description" content="简单的个人博客" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>万一可以了</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+            <i class="fa-solid fa-home fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;档案</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;类别</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;万一可以了</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-home fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                    </div>
+                </a>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                    </div>
+                </a>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">档案</div>
+                    </div>
+                </a>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">类别</div>
+                    </div>
+                </a>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/peoplewith">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>时间对象</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/6
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h3 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 实例化</span></span><br><span class="line"><span class="comment">// const date = new Date(); // 系统默认时间</span></span><br><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&#x27;2020-05-01&#x27;</span>) <span class="comment">// 指定时间</span></span><br><span class="line"><span class="comment">// date 变量即所谓的时间对象</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> date)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 1. 实例化</span></span><br><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="comment">// 2. 调用时间对象方法</span></span><br><span class="line"><span class="comment">// 通过方法分别获取年、月、日，时、分、秒</span></span><br><span class="line"><span class="keyword">const</span> year = date.<span class="title function_">getFullYear</span>(); <span class="comment">// 四位年份</span></span><br><span class="line"><span class="keyword">const</span> month = date.<span class="title function_">getMonth</span>(); <span class="comment">// 0 ~ 11</span></span><br></pre></td></tr></table></figure>
+
+
+<p>getFullYear 获取四位年份</p>
+<p>getMonth 获取月份，取值为 0 ~ 11</p>
+<p>getDate 获取月份中的每一天，不同月份取值也不相同</p>
+<p>getDay 获取星期，取值为 0 ~ 6</p>
+<p>getHours 获取小时，取值为 0 ~ 23</p>
+<p>getMinutes 获取分钟，取值为 0 ~ 59</p>
+<p>getSeconds 获取秒，取值为 0 ~ 59</p>
+<h3 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h3><p>时间戳是指1970年01月01日00时00分00秒起至现在的总秒数或毫秒数，它是一种特殊的计量时间的方式。</p>
+<p>注：ECMAScript 中时间戳是以毫秒计的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 1. 实例化</span></span><br><span class="line">  <span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">  <span class="comment">// 2. 获取时间戳</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">getTime</span>())</span><br><span class="line"><span class="comment">// 还有一种获取时间戳的方法</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="keyword">new</span> <span class="title class_">Date</span>())</span><br><span class="line">  <span class="comment">// 还有一种获取时间戳的方法</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>获取时间戳的方法，分别为 getTime 和 Date.now 和  +new Date()</p>
+<h2 id="DOM-节点"><a href="#DOM-节点" class="headerlink" title="DOM 节点"></a>DOM 节点</h2><blockquote>
+<p>掌握元素节点创建、复制、插入、删除等操作的方法，能够依据元素节点的结构关系查找节点</p>
+</blockquote>
+<p>回顾之前 DOM 的操作都是针对元素节点的属性或文本的，除此之外也有专门针对元素节点本身的操作，如插入、复制、删除、替换等。</p>
+<h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><p>在已有的 DOM 节点中插入新的 DOM 节点时，需要关注两个关键因素：首先要得到新的 DOM 节点，其次在哪个位置插入这个节点。</p>
+<p>如下代码演示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span>&gt;</span>插入节点<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>在现有 dom 结构基础上插入新的元素节点<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 普通盒子 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 点击按钮向 box 盒子插入节点 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>插入节点<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 点击按钮，在网页中插入节点</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.btn&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 1. 获得一个 DOM 元素节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> p = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;p&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">      p.<span class="property">innerText</span> = <span class="string">&#x27;创建的新的p标签&#x27;</span></span></span><br><span class="line"><span class="language-javascript">      p.<span class="property">className</span> = <span class="string">&#x27;info&#x27;</span></span></span><br><span class="line"><span class="language-javascript">      </span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 复制原有的 DOM 节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> p2 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;p&#x27;</span>).<span class="title function_">cloneNode</span>(<span class="literal">true</span>)</span></span><br><span class="line"><span class="language-javascript">      p2.<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;red&#x27;</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 2. 插入盒子 box 盒子</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>).<span class="title function_">appendChild</span>(p)</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>).<span class="title function_">appendChild</span>(p2)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结论：</p>
+<ul>
+<li><p><code>createElement</code> 动态创建任意 DOM 节点</p>
+</li>
+<li><p><code>cloneNode</code> 复制现有的 DOM 节点，传入参数 true 会复制所有子节点</p>
+</li>
+<li><p><code>appendChild</code> 在末尾（结束标签前）插入节点</p>
+</li>
+</ul>
+<p>再来看另一种情形的代码演示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span>&gt;</span>插入节点<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>在现有 dom 结构基础上插入新的元素节点<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn1&quot;</span>&gt;</span>在任意节点前插入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 点击按钮，在已有 DOM 中插入新节点</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> btn1 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.btn1&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    btn1.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 第 2 个 li 元素</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> relative = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;li:nth-child(2)&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 1. 动态创建新的节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> li1 = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;li&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">      li1.<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;red&#x27;</span></span></span><br><span class="line"><span class="language-javascript">      li1.<span class="property">innerText</span> = <span class="string">&#x27;Web APIs&#x27;</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 复制现有的节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> li2 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;li:first-child&#x27;</span>).<span class="title function_">cloneNode</span>(<span class="literal">true</span>)</span></span><br><span class="line"><span class="language-javascript">      li2.<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;blue&#x27;</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 2. 在 relative 节点前插入</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>).<span class="title function_">insertBefore</span>(li1, relative)</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>).<span class="title function_">insertBefore</span>(li2, relative)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结论：</p>
+<ul>
+<li><p><code>createElement</code> 动态创建任意 DOM 节点</p>
+</li>
+<li><p><code>cloneNode</code> 复制现有的 DOM 节点，传入参数 true 会复制所有子节点</p>
+</li>
+<li><p><code>insertBefore</code> 在父节点中任意子节点之前插入新节点</p>
+</li>
+</ul>
+<h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><p>删除现有的 DOM 节点，也需要关注两个因素：首先由父节点删除子节点，其次是要删除哪个子节点。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 点击按钮删除节点 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>删除节点<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>Web APIs<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 获取 ul 父节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 待删除的子节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> lis = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;li&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 删除节点</span></span></span><br><span class="line"><span class="language-javascript">      ul.<span class="title function_">removeChild</span>(lis[<span class="number">0</span>])</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结论：<code>removeChild</code> 删除节点时一定是由父子关系。</p>
+<h3 id="查找节点"><a href="#查找节点" class="headerlink" title="查找节点"></a>查找节点</h3><p>DOM 树中的任意节点都不是孤立存在的，它们要么是父子关系，要么是兄弟关系，不仅如此，我们可以依据节点之间的关系查找节点。</p>
+<h4 id="父子关系"><a href="#父子关系" class="headerlink" title="父子关系"></a>父子关系</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn1&quot;</span>&gt;</span>所有的子节点<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 获取 ul 的子节点 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>JavaScript 基础<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>Web APIs<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> btn1 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.btn1&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    btn1.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 父节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 所有的子节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">childNodes</span>)</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 只包含元素子节点</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">children</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结论：</p>
+<ul>
+<li><code>childNodes</code> 获取全部的子节点，回车换行会被认为是空白文本节点</li>
+<li><code>children</code> 只获取元素类型节点</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">width</span>=<span class="string">&quot;60&quot;</span>&gt;</span>序号<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>课程名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>难度<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">width</span>=<span class="string">&quot;80&quot;</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>初级<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>变色<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>初级<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>变色<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>Web APIs<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>中级<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>变色<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 获取所有 button 节点，并添加事件监听</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> buttons = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;table button&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; buttons.<span class="property">length</span>; i++) &#123;</span></span><br><span class="line"><span class="language-javascript">      buttons[i].<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// console.log(this.parentNode); // 父节点 td</span></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// console.log(this.parentNode.parentNode); // 爷爷节点 tr</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">parentNode</span>.<span class="property">parentNode</span>.<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;red&#x27;</span></span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结论：<code>parentNode</code> 获取父节点，以相对位置查找节点，实际应用中非常灵活。</p>
+<h4 id="兄弟关系"><a href="#兄弟关系" class="headerlink" title="兄弟关系"></a>兄弟关系</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>JavaScript 基础<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>Web APIs<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 获取所有 li 节点</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> lis = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;ul li&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 对所有的 li 节点添加事件监听</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; lis.<span class="property">length</span>; i++) &#123;</span></span><br><span class="line"><span class="language-javascript">      lis[i].<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 前一个节点</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">previousSibling</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 下一下节点</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">nextSibling</span>)</span></span><br><span class="line"><span class="language-javascript">      &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结论：</p>
+<ul>
+<li><code>previousSibling</code> 获取前一个节点，以相对位置查找节点，实际应用中非常灵活。</li>
+<li><code>nextSibling</code> 获取后一个节点，以相对位置查找节点，实际应用中非常灵活。</li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2023 万一可以了
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;万一
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
